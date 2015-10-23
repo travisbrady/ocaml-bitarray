@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: 19b786b782112c60d2fc6f141fc9461e)
+version = "0.1"
+description = "OCaml bindings to the BitArray C library"
+requires = "ctypes ctypes.stubs threads"
+archive(byte) = "bitarray.cma"
+archive(byte, plugin) = "bitarray.cma"
+archive(native) = "bitarray.cmxa"
+archive(native, plugin) = "bitarray.cmxs"
+exists_if = "bitarray.cma"
+# OASIS_STOP
+
