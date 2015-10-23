@@ -1,4 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: f0a9c3f7abc320a32c58f567791f8395)
+# DO NOT EDIT (digest: 180600522869e20fea9a8e43cc2fb1c9)
+bitarray_stubs.o
 bit_array.o
 # OASIS_STOP
