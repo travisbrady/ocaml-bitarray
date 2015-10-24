@@ -1,7 +1,7 @@
 open Ctypes
 
-module C(F: Cstubs.FOREIGN) =
-    struct
+module C(F: Cstubs.FOREIGN) = 
+struct
 
     type bit_array
     let bit_array : bit_array structure typ = structure "BIT_ARRAY"
@@ -82,6 +82,8 @@ module C(F: Cstubs.FOREIGN) =
     let bit_array_xor = F.foreign "bit_array_xor" (ptr bit_array @-> ptr bit_array @-> ptr bit_array @-> returning void)
     let bit_array_not = F.foreign "bit_array_not" (ptr bit_array @-> ptr bit_array @-> returning void)
 
+    let bit_array_reverse = F.foreign "bit_array_reverse" (ptr bit_array @-> returning void)
+    let bit_array_divide = F.foreign "bit_array_divide" (ptr bit_array @-> ptr bit_array @-> ptr bit_array @-> returning void)
     let bit_array_hash = F.foreign "bit_array_hash" (ptr bit_array @-> uint64_t @-> returning uint64_t)
 
     let bit_array_random = F.foreign "bit_array_random" (ptr bit_array @-> float @-> returning void)

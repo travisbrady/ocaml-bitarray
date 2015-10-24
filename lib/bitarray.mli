@@ -18,9 +18,15 @@ val toggle_all : t -> unit
 val num_bits_set : t -> int64
 val num_bits_cleared : t -> int64
 val hamming_distance : t -> t -> int64
+
 val parity : t -> bool
+(** [parity] returns [true] if odd number of bits set
+ *  [parity] returns [false] if even number of bits set *)
 
 val bitwise_and : t -> t -> t
 val bitwise_or : t -> t -> t
 val bitwise_xor : t -> t -> t
 val bitwise_not : t -> t
+
+val random : t -> float -> unit
+(** [random] sets bits randomly with probability [prob] *)

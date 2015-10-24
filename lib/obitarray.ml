@@ -1,3 +1,4 @@
+(*
 open Ctypes
 
 type t = Bitarray.C.bit_array Ctypes.structure Ctypes_static.ptr
@@ -63,3 +64,6 @@ let bitwise_not ba =
     let dest = Bitarray.C.bit_array_create len_a in
     Bitarray.C.bit_array_not dest ba;
     dest
+
+let random ba prob = Bitarray.C.bit_array_random ba prob
+*)

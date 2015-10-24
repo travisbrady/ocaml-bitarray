@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 64c66f48ed46262f63e38d933bfd5b03) *)
+(* DO NOT EDIT (digest: e263a15d75724aad9f356acb11170822) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -607,12 +607,23 @@ end
 open Ocamlbuild_plugin;;
 let package_default =
   {
-     MyOCamlbuildBase.lib_ocaml = [("bitarray", ["lib"], [])];
-     lib_c = [("bitarray", "lib", ["lib/bit_array.h"; "lib/bit_macros.h"])];
+     MyOCamlbuildBase.lib_ocaml = [("obits", ["lib"], [])];
+     lib_c = [("obits", "lib", ["lib/bit_array.h"; "lib/bit_macros.h"])];
      flags =
        [
-          (["oasis_library_bitarray_ccopt"; "compile"],
-            [(OASISExpr.EBool true, S [A "-ccopt"; A "-I${pkg_ctypes}/.."])])
+          (["oasis_library_obits_ccopt"; "compile"],
+            [
+               (OASISExpr.EBool true,
+                 S
+                   [
+                      A "-ccopt";
+                      A "-I${pkg_ctypes}/..";
+                      A "-ccopt";
+                      A "-I";
+                      A "-ccopt";
+                      A "${pkg_ctypes_stubs}"
+                   ])
+            ])
        ];
      includes = [("lib_test", ["lib"]); ("examples", ["lib"])]
   }
@@ -622,7 +633,7 @@ let conf = {MyOCamlbuildFindlib.no_automatic_syntax = false}
 
 let dispatch_default = MyOCamlbuildBase.dispatch_default conf package_default;;
 
-# 626 "myocamlbuild.ml"
+# 637 "myocamlbuild.ml"
 (* OASIS_STOP *)
 
 open Ocamlbuild_plugin;;
