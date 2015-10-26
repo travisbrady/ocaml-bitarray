@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: e263a15d75724aad9f356acb11170822) *)
+(* DO NOT EDIT (digest: 83abe958c3ea708377560a35c27f0138) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -607,11 +607,11 @@ end
 open Ocamlbuild_plugin;;
 let package_default =
   {
-     MyOCamlbuildBase.lib_ocaml = [("obits", ["lib"], [])];
-     lib_c = [("obits", "lib", ["lib/bit_array.h"; "lib/bit_macros.h"])];
+     MyOCamlbuildBase.lib_ocaml = [("bitarray", ["lib"], [])];
+     lib_c = [("bitarray", "lib", ["lib/bit_array.h"; "lib/bit_macros.h"])];
      flags =
        [
-          (["oasis_library_obits_ccopt"; "compile"],
+          (["oasis_library_bitarray_ccopt"; "compile"],
             [
                (OASISExpr.EBool true,
                  S

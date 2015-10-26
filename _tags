@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 1e1fe87baceacf81c50946853f0c3c7c)
+# DO NOT EDIT (digest: ba4e09f6c6aebbc4903185081dd29e25)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -17,12 +17,12 @@ true: annot, bin_annot
 # Executable bitarray_bindgen
 "lib_gen/bitarray_bindgen.byte": pkg_ctypes.stubs
 <lib_gen/*.ml{,i,y}>: pkg_ctypes.stubs
-# Library obits
-"lib/obits.cmxs": use_obits
-<lib/*.ml{,i,y}>: oasis_library_obits_ccopt
-"lib/bitarray_stubs.c": oasis_library_obits_ccopt
-"lib/bit_array.c": oasis_library_obits_ccopt
-<lib/obits.{cma,cmxa}>: use_libobits_stubs
+# Library bitarray
+"lib/bitarray.cmxs": use_bitarray
+<lib/*.ml{,i,y}>: oasis_library_bitarray_ccopt
+"lib/bitarray_stubs.c": oasis_library_bitarray_ccopt
+"lib/bit_array.c": oasis_library_bitarray_ccopt
+<lib/bitarray.{cma,cmxa}>: use_libbitarray_stubs
 <lib/*.ml{,i,y}>: pkg_ctypes
 <lib/*.ml{,i,y}>: pkg_ctypes.stubs
 <lib/*.ml{,i,y}>: pkg_threads
@@ -36,22 +36,22 @@ true: annot, bin_annot
 "examples/simple.native": pkg_ctypes
 "examples/simple.native": pkg_ctypes.stubs
 "examples/simple.native": pkg_threads
-"examples/simple.native": use_obits
+"examples/simple.native": use_bitarray
 <examples/*.ml{,i,y}>: pkg_ctypes
 <examples/*.ml{,i,y}>: pkg_ctypes.stubs
 <examples/*.ml{,i,y}>: pkg_threads
-<examples/*.ml{,i,y}>: use_obits
+<examples/*.ml{,i,y}>: use_bitarray
 # Executable bench_obitarray
 "lib_test/bench_obitarray.native": pkg_core
 "lib_test/bench_obitarray.native": pkg_core_bench
 "lib_test/bench_obitarray.native": pkg_ctypes
 "lib_test/bench_obitarray.native": pkg_ctypes.stubs
 "lib_test/bench_obitarray.native": pkg_threads
-"lib_test/bench_obitarray.native": use_obits
+"lib_test/bench_obitarray.native": use_bitarray
 <lib_test/*.ml{,i,y}>: pkg_core
 <lib_test/*.ml{,i,y}>: pkg_core_bench
 <lib_test/*.ml{,i,y}>: pkg_ctypes
 <lib_test/*.ml{,i,y}>: pkg_ctypes.stubs
 <lib_test/*.ml{,i,y}>: pkg_threads
-<lib_test/*.ml{,i,y}>: use_obits
+<lib_test/*.ml{,i,y}>: use_bitarray
 # OASIS_STOP

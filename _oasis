@@ -10,9 +10,9 @@ Plugins:            META (0.4), DevFiles (0.4), StdFiles (0.4)
 XStdFilesAUTHORS:   false
 XStdFilesREADME:    false
 
-Library obits
+Library bitarray
   Path:                 lib
-  FindlibName:          obits
+  FindlibName:          bitarray
   BuildTools:           ocamlbuild
   InternalModules:      Bitarray_bindings, Bitarray_generated
   BuildDepends:         ctypes, ctypes.stubs, threads
@@ -31,7 +31,7 @@ Executable "bitarray_bindgen"
 Executable simple
   Path:                 examples
   BuildTools:           ocamlbuild
-  BuildDepends:         obits
+  BuildDepends:         bitarray
   CompiledObject:       native
   MainIs:               simple.ml
   Install:              false
@@ -43,7 +43,7 @@ Flag bench
 Executable bench_obitarray
   Path:                 lib_test
   BuildTools:           ocamlbuild
-  BuildDepends:         obits, core, core_bench
+  BuildDepends:         bitarray, core, core_bench
   CompiledObject:       native
   MainIs:               bench_obitarray.ml
   Install:              false
