@@ -12,10 +12,10 @@ let free ba =
 
 let create size =
     let ba = make ~finalise:(fun p ->
-        C.bit_array_free (addr p)
+        C.bit_array_dealloc (addr p)
     ) C.bit_array in
-    let _ = C.bit_array_alloc (addr ba) (Unsigned.UInt64.of_int64 size) in
-    ba
+    let ba = C.bit_array_alloc (addr ba) (Unsigned.UInt64.of_int64 size) in
+    !@ba
 
 let length ba =
     C.bit_array_length (addr ba)
