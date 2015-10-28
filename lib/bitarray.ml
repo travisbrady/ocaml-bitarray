@@ -14,12 +14,15 @@ let create size =
     let ba = make ~finalise:(fun p ->
         C.bit_array_free (addr p)
     ) C.bit_array in
-    C.bit_array_alloc (addr ba) (Unsigned.UInt64.of_int64 size);
+    let _ = C.bit_array_alloc (addr ba) (Unsigned.UInt64.of_int64 size) in
     ba
 
 let length ba =
     C.bit_array_length (addr ba)
     |> Unsigned.UInt64.to_int64
+
+let resize ba num_bits =
+    C.bit_array_resize (addr ba) (Unsigned.UInt64.of_int64 num_bits)
 
 let get_bit ba idx =
     C.bit_array_get_bit (addr ba) (Unsigned.UInt64.of_int64 idx)
@@ -56,6 +59,24 @@ let num_bits_cleared ba = (C.bit_array_num_bits_cleared (addr ba)) |> Unsigned.U
 let hamming_distance ba bb = (C.bit_array_hamming_distance (addr ba) (addr bb)) |> Unsigned.UInt64.to_int64
 let parity ba = C.bit_array_parity (addr ba)
 
+let find_bit op ba =
+    let out_idx = Unsigned.UInt64.of_int 0 in
+    let out_idx_ptr = allocate uint64_t out_idx in
+    let ret = op (addr ba) out_idx_ptr in
+    if ret then (Some (Unsigned.UInt64.to_int64 !@out_idx_ptr)) else None
+
+let find_first_set_bit = find_bit C.bit_array_find_first_set_bit
+let find_first_clear_bit = find_bit C.bit_array_find_first_clear_bit
+let find_last_set_bit = find_bit C.bit_array_find_last_set_bit
+let find_last_clear_bit = find_bit C.bit_array_find_last_clear_bit
+
+let sort_bits ba = C.bit_array_sort_bits (addr ba)
+let sort_bits_rev ba = C.bit_array_sort_bits_rev (addr ba)
+
+let clone ba =
+    let ba_ptr = C.bit_array_clone (addr ba) in
+    !@ba_ptr
+
 let bitwise_op op ba bb =
     let len_a = length ba in
     let len_b = length bb in
@@ -74,6 +95,18 @@ let bitwise_not ba =
     let dest = create len_a in
     C.bit_array_not (addr dest) (addr ba);
     dest
+
+let cmp ba1 ba2 = C.bit_array_cmp (addr ba1) (addr ba2)
+
+let shift_right ?(fill=false) ba num_bits =
+    C.bit_array_shift_right (addr ba) (Unsigned.UInt64.of_int64 num_bits) fill
+
+let shift_left ?(fill=false) ba num_bits =
+    C.bit_array_shift_left (addr ba) (Unsigned.UInt64.of_int64 num_bits) fill
+
+let reverse ba = C.bit_array_reverse (addr ba)
+let reverse_region ba start len =
+    C.bit_array_reverse_region (addr ba) (Unsigned.UInt64.of_int64 start) (Unsigned.UInt64.of_int64 len)
 
 let random ba prob = C.bit_array_random (addr ba) prob
 let shuffle ba = C.bit_array_shuffle (addr ba)

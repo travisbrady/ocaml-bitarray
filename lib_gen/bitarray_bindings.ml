@@ -14,12 +14,12 @@ struct
     let bit_array_create = F.foreign "bit_array_create" (uint64_t @-> returning (ptr bit_array))
     let bit_array_free = F.foreign "bit_array_free" (ptr bit_array @-> returning void)
     let bit_array_alloc = F.foreign "bit_array_alloc" (ptr bit_array @-> uint64_t @-> returning (ptr bit_array))
-    let bit_array_dealloc = F.foreign "bit_array_dealloc" ((ptr bit_array) @-> returning void)
+    let bit_array_dealloc = F.foreign "bit_array_dealloc" (ptr bit_array @-> returning void)
     let bit_array_length = F.foreign "bit_array_length" (ptr bit_array @-> returning uint64_t)
-    let bit_array_resize = F.foreign "bit_array_resize" ((ptr bit_array) @-> uint64_t @-> returning char)
-    let bit_array_ensure_size = F.foreign "bit_array_ensure_size" ((ptr bit_array) @-> uint64_t @-> returning char)
-    let bit_array_resize_critical = F.foreign "bit_array_resize_critical" ((ptr bit_array) @-> uint64_t @-> returning void)
-    let bit_array_ensure_size_critical = F.foreign "bit_array_ensure_size_critical" ((ptr bit_array) @-> uint64_t @-> returning void)
+    let bit_array_resize = F.foreign "bit_array_resize" (ptr bit_array @-> uint64_t @-> returning bool)
+    let bit_array_ensure_size = F.foreign "bit_array_ensure_size" (ptr bit_array @-> uint64_t @-> returning char)
+    let bit_array_resize_critical = F.foreign "bit_array_resize_critical" (ptr bit_array @-> uint64_t @-> returning void)
+    let bit_array_ensure_size_critical = F.foreign "bit_array_ensure_size_critical" (ptr bit_array @-> uint64_t @-> returning void)
 
     let bit_array_get_bit = F.foreign "bit_array_get_bit" (ptr bit_array @-> uint64_t @-> returning bool)
     let bit_array_set_bit = F.foreign "bit_array_set_bit" (ptr bit_array @-> uint64_t @-> returning void)
@@ -41,11 +41,11 @@ struct
     let bit_array_clear_all = F.foreign "bit_array_clear_all" (ptr bit_array @-> returning void)
     let bit_array_toggle_all = F.foreign "bit_array_toggle_all" (ptr bit_array @-> returning void)
 
-    let bit_array_get_word64 = F.foreign "bit_array_get_word64" ((ptr bit_array) @-> uint64_t @-> returning uint64_t)
-    let bit_array_get_word32 = F.foreign "bit_array_get_word32" ((ptr bit_array) @-> uint64_t @-> returning uint32_t)
-    let bit_array_get_word16 = F.foreign "bit_array_get_word16" ((ptr bit_array) @-> uint64_t @-> returning uint16_t)
-    let bit_array_get_word8 = F.foreign "bit_array_get_word8" ((ptr bit_array) @-> uint64_t @-> returning uint8_t)
-    let bit_array_get_wordn = F.foreign "bit_array_get_wordn" ((ptr bit_array) @-> uint64_t @-> int @-> returning uint64_t)
+    let bit_array_get_word64 = F.foreign "bit_array_get_word64" (ptr bit_array @-> uint64_t @-> returning uint64_t)
+    let bit_array_get_word32 = F.foreign "bit_array_get_word32" (ptr bit_array @-> uint64_t @-> returning uint32_t)
+    let bit_array_get_word16 = F.foreign "bit_array_get_word16" (ptr bit_array @-> uint64_t @-> returning uint16_t)
+    let bit_array_get_word8 = F.foreign "bit_array_get_word8" (ptr bit_array @-> uint64_t @-> returning uint8_t)
+    let bit_array_get_wordn = F.foreign "bit_array_get_wordn" (ptr bit_array @-> uint64_t @-> int @-> returning uint64_t)
 
     let bit_array_set_word64 = F.foreign "bit_array_set_word64" ((ptr bit_array) @-> uint64_t @-> uint64_t @-> returning void)
     let bit_array_set_word32 = F.foreign "bit_array_set_word32" ((ptr bit_array) @-> uint64_t @-> uint32_t @-> returning void)
@@ -62,10 +62,10 @@ struct
     let bit_array_find_prev_set_bit = F.foreign "bit_array_find_prev_set_bit" ((ptr bit_array) @-> uint64_t @-> (ptr uint64_t) @-> returning char)
     let bit_array_find_prev_clear_bit = F.foreign "bit_array_find_prev_clear_bit" ((ptr bit_array) @-> uint64_t @-> (ptr uint64_t) @-> returning char)
 
-    let bit_array_find_first_set_bit = F.foreign "bit_array_find_first_set_bit" (ptr bit_array @-> ptr uint64_t @-> returning char)
-    let bit_array_find_first_clear_bit = F.foreign "bit_array_find_first_clear_bit" (ptr bit_array @-> ptr uint64_t @-> returning char)
-    let bit_array_find_last_set_bit = F.foreign "bit_array_find_last_set_bit" (ptr bit_array @-> ptr uint64_t @-> returning char)
-    let bit_array_find_last_clear_bit = F.foreign "bit_array_find_last_clear_bit" (ptr bit_array @-> ptr uint64_t @-> returning char)
+    let bit_array_find_first_set_bit = F.foreign "bit_array_find_first_set_bit" (ptr bit_array @-> ptr uint64_t @-> returning bool)
+    let bit_array_find_first_clear_bit = F.foreign "bit_array_find_first_clear_bit" (ptr bit_array @-> ptr uint64_t @-> returning bool)
+    let bit_array_find_last_set_bit = F.foreign "bit_array_find_last_set_bit" (ptr bit_array @-> ptr uint64_t @-> returning bool)
+    let bit_array_find_last_clear_bit = F.foreign "bit_array_find_last_clear_bit" (ptr bit_array @-> ptr uint64_t @-> returning bool)
 
     let bit_array_sort_bits = F.foreign "bit_array_sort_bits" (ptr bit_array @-> returning void)
     let bit_array_sort_bits_rev = F.foreign "bit_array_sort_bits_rev" (ptr bit_array @-> returning void)
@@ -82,7 +82,14 @@ struct
     let bit_array_xor = F.foreign "bit_array_xor" (ptr bit_array @-> ptr bit_array @-> ptr bit_array @-> returning void)
     let bit_array_not = F.foreign "bit_array_not" (ptr bit_array @-> ptr bit_array @-> returning void)
 
+    let bit_array_cmp = F.foreign "bit_array_cmp" (ptr bit_array @-> ptr bit_array @-> returning int)
+
+    let bit_array_shift_right = F.foreign "bit_array_shift_right" (ptr bit_array @-> uint64_t @-> bool @-> returning void)
+    let bit_array_shift_left = F.foreign "bit_array_shift_left" (ptr bit_array @-> uint64_t @-> bool @-> returning void)
+
     let bit_array_reverse = F.foreign "bit_array_reverse" (ptr bit_array @-> returning void)
+    let bit_array_reverse_region = F.foreign "bit_array_reverse_region" (ptr bit_array @-> uint64_t @-> uint64_t @-> returning void)
+
     let bit_array_divide = F.foreign "bit_array_divide" (ptr bit_array @-> ptr bit_array @-> ptr bit_array @-> returning void)
     let bit_array_hash = F.foreign "bit_array_hash" (ptr bit_array @-> uint64_t @-> returning uint64_t)
 
