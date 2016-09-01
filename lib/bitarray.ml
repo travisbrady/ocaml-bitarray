@@ -70,6 +70,16 @@ let find_first_clear_bit = find_bit C.bit_array_find_first_clear_bit
 let find_last_set_bit = find_bit C.bit_array_find_last_set_bit
 let find_last_clear_bit = find_bit C.bit_array_find_last_clear_bit
 
+let find_bit_offset op ba offset =
+    let out_idx = Unsigned.UInt64.of_int 0 in
+    let out_idx_ptr = allocate uint64_t out_idx in
+    let ret = op (addr ba) (Unsigned.UInt64.of_int64 offset) out_idx_ptr in
+    if ret then (Some (Unsigned.UInt64.to_int64 !@out_idx_ptr)) else None
+
+let find_next_set_bit = find_bit_offset C.bit_array_find_next_set_bit
+let find_next_clear_bit = find_bit_offset C.bit_array_find_next_clear_bit
+
+
 let sort_bits ba = C.bit_array_sort_bits (addr ba)
 let sort_bits_rev ba = C.bit_array_sort_bits_rev (addr ba)
 

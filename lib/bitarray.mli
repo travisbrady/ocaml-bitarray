@@ -30,6 +30,9 @@ val find_first_clear_bit : t -> int64 option
 val find_last_set_bit : t -> int64 option
 val find_last_clear_bit : t -> int64 option
 
+val find_next_set_bit : t -> int64 -> int64 option
+val find_next_clear_bit : t -> int64 -> int64 option
+
 val sort_bits : t -> unit
 val sort_bits_rev : t -> unit
 
