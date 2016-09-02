@@ -47,3 +47,16 @@ Executable bench_obitarray
   CompiledObject:       native
   MainIs:               bench_obitarray.ml
   Install:              false
+
+Executable test_bitarray
+  Path:                 lib_test
+  BuildTools:           ocamlbuild
+  BuildDepends:         bitarray, alcotest
+  CompiledObject:       best
+  MainIs:               test_bitarray.ml
+  Install:              false
+
+Test test_bitarray
+  Run$:                 flag(tests)
+  Command:              test_bitarray
+  WorkingDirectory:     lib_test
