@@ -78,10 +78,17 @@ let find_bit_offset op ba offset =
 
 let find_next_set_bit = find_bit_offset C.bit_array_find_next_set_bit
 let find_next_clear_bit = find_bit_offset C.bit_array_find_next_clear_bit
+let find_prev_set_bit = find_bit_offset C.bit_array_find_prev_set_bit
+let find_prev_clear_bit = find_bit_offset C.bit_array_find_prev_clear_bit
 
 
 let sort_bits ba = C.bit_array_sort_bits (addr ba)
 let sort_bits_rev ba = C.bit_array_sort_bits_rev (addr ba)
+
+let of_string str =
+    let ba = create 0L in
+    C.bit_array_from_str (addr ba) str;
+    ba
 
 let clone ba =
     let ba_ptr = C.bit_array_clone (addr ba) in

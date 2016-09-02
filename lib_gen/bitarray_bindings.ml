@@ -58,12 +58,12 @@ struct
 
     let bit_array_num_bits_set = F.foreign "bit_array_num_bits_set" (ptr bit_array @-> returning uint64_t)
     let bit_array_num_bits_cleared = F.foreign "bit_array_num_bits_cleared" (ptr bit_array @-> returning uint64_t)
-    let bit_array_hamming_distance = F.foreign "bit_array_hamming_distance" ((ptr bit_array) @-> (ptr bit_array) @-> returning uint64_t)
+    let bit_array_hamming_distance = F.foreign "bit_array_hamming_distance" (ptr bit_array @-> (ptr bit_array) @-> returning uint64_t)
     let bit_array_parity = F.foreign "bit_array_parity" (ptr bit_array @-> returning bool)
-    let bit_array_find_next_set_bit = F.foreign "bit_array_find_next_set_bit" ((ptr bit_array) @-> uint64_t @-> (ptr uint64_t) @-> returning bool)
-    let bit_array_find_next_clear_bit = F.foreign "bit_array_find_next_clear_bit" ((ptr bit_array) @-> uint64_t @-> (ptr uint64_t) @-> returning bool)
-    let bit_array_find_prev_set_bit = F.foreign "bit_array_find_prev_set_bit" ((ptr bit_array) @-> uint64_t @-> (ptr uint64_t) @-> returning char)
-    let bit_array_find_prev_clear_bit = F.foreign "bit_array_find_prev_clear_bit" ((ptr bit_array) @-> uint64_t @-> (ptr uint64_t) @-> returning char)
+    let bit_array_find_next_set_bit = F.foreign "bit_array_find_next_set_bit" (ptr bit_array @-> uint64_t @-> (ptr uint64_t) @-> returning bool)
+    let bit_array_find_next_clear_bit = F.foreign "bit_array_find_next_clear_bit" (ptr bit_array @-> uint64_t @-> (ptr uint64_t) @-> returning bool)
+    let bit_array_find_prev_set_bit = F.foreign "bit_array_find_prev_set_bit" (ptr bit_array @-> uint64_t @-> (ptr uint64_t) @-> returning bool)
+    let bit_array_find_prev_clear_bit = F.foreign "bit_array_find_prev_clear_bit" (ptr bit_array @-> uint64_t @-> (ptr uint64_t) @-> returning bool)
 
     let bit_array_find_first_set_bit = F.foreign "bit_array_find_first_set_bit" (ptr bit_array @-> ptr uint64_t @-> returning bool)
     let bit_array_find_first_clear_bit = F.foreign "bit_array_find_first_clear_bit" (ptr bit_array @-> ptr uint64_t @-> returning bool)
