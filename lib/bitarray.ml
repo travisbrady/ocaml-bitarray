@@ -3,6 +3,7 @@ open Ctypes
 module C = Bitarray_bindings.C(Bitarray_generated)
 
 type t = C.bit_array Ctypes.structure
+type hack
 
 let _create size =
     C.bit_array_create (Unsigned.UInt64.of_int64 size)
@@ -14,8 +15,9 @@ let create size =
     let ba = make ~finalise:(fun p ->
         C.bit_array_dealloc (addr p)
     ) C.bit_array in
-    let ba = C.bit_array_alloc (addr ba) (Unsigned.UInt64.of_int64 size) in
-    !@ba
+    let _ = C.bit_array_alloc (addr ba) (Unsigned.UInt64.of_int64 size) in
+    ba
+
 
 let length ba =
     C.bit_array_length (addr ba)
