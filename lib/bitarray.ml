@@ -114,6 +114,9 @@ let shift_right ?(fill=false) ba num_bits =
 let shift_left ?(fill=false) ba num_bits =
     C.bit_array_shift_left (addr ba) (Unsigned.UInt64.of_int64 num_bits) fill
 
+let add_uint64 ba value =
+    C.bit_array_add_uint64 (addr ba) (Unsigned.UInt64.of_int64 value)
+
 let reverse ba = C.bit_array_reverse (addr ba)
 let reverse_region ba start len =
     C.bit_array_reverse_region (addr ba) (Unsigned.UInt64.of_int64 start) (Unsigned.UInt64.of_int64 len)

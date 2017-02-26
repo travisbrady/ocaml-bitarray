@@ -62,6 +62,9 @@ val shift_right : ?fill:bool -> t -> int64 -> unit
 val shift_left : ?fill:bool -> t -> int64 -> unit
 (** [shift_left ba num_bits] shifts [ba] left by [num_bits] *)
 
+val add_uint64 : t -> int64 -> unit
+(** [add_uint64 ba value] adds [value] to [ba] *)
+
 val reverse : t -> unit
 (** [reverse ba] reverses [ba] in place *)
 

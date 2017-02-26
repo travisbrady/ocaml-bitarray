@@ -93,6 +93,7 @@ struct
     let bit_array_reverse = F.foreign "bit_array_reverse" (ptr bit_array @-> returning void)
     let bit_array_reverse_region = F.foreign "bit_array_reverse_region" (ptr bit_array @-> uint64_t @-> uint64_t @-> returning void)
 
+    let bit_array_add_uint64 = F.foreign "bit_array_add_uint64" (ptr bit_array @-> uint64_t @-> returning void)
     let bit_array_divide = F.foreign "bit_array_divide" (ptr bit_array @-> ptr bit_array @-> ptr bit_array @-> returning void)
     let bit_array_hash = F.foreign "bit_array_hash" (ptr bit_array @-> uint64_t @-> returning uint64_t)
 
