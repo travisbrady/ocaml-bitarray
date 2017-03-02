@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: ba4e09f6c6aebbc4903185081dd29e25)
+# DO NOT EDIT (digest: 2e9a31f4666f3680827b0a935ce2e1f5)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -50,6 +50,13 @@ true: annot, bin_annot
 "lib_test/bench_obitarray.native": use_bitarray
 <lib_test/*.ml{,i,y}>: pkg_core
 <lib_test/*.ml{,i,y}>: pkg_core_bench
+# Executable test_bitarray
+<lib_test/test_bitarray.{native,byte}>: pkg_alcotest
+<lib_test/test_bitarray.{native,byte}>: pkg_ctypes
+<lib_test/test_bitarray.{native,byte}>: pkg_ctypes.stubs
+<lib_test/test_bitarray.{native,byte}>: pkg_threads
+<lib_test/test_bitarray.{native,byte}>: use_bitarray
+<lib_test/*.ml{,i,y}>: pkg_alcotest
 <lib_test/*.ml{,i,y}>: pkg_ctypes
 <lib_test/*.ml{,i,y}>: pkg_ctypes.stubs
 <lib_test/*.ml{,i,y}>: pkg_threads

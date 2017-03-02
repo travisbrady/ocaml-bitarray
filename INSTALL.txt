@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: df8708d629071e1a775d57cc4daea339) *)
+(* DO NOT EDIT (digest: 8ab72294504abc96839a0e726b2e0de7) *)
 
 This is the INSTALL file for the ocaml-bitarray distribution.
 
@@ -11,11 +11,12 @@ Dependencies
 
 In order to compile this package, you will need:
 
-* ocaml
+* ocaml for all, test test_bitarray
 * findlib
 * ctypes for library bitarray, executable bitarray_bindgen
 * core for executable bench_obitarray
 * core_bench for executable bench_obitarray
+* alcotest for executable test_bitarray
 
 Installing
 ==========
