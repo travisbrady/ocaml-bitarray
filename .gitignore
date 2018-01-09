@@ -1,6 +1,5 @@
-*.native
-*.byte
-_build/*
-*.pyc
-*.o
+_build/
+_opam/
+.merlin
+*.install
 *.data
