@@ -2,5 +2,4 @@
 
 (executable
   ((name bitarray_bindgen)
-   (public_name bitarray_bindgen)
    (libraries (ctypes ctypes.stubs))))
