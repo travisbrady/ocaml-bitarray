@@ -11,3 +11,8 @@
    (public_name bench_obitarray)
    (libraries (bitarray core core_bench))
    (modules (bench_obitarray))))
+
+(alias
+ ((name runtest)
+  (deps (test_bitarray.exe))
+  (action (run ${<}))))
