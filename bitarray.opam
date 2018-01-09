@@ -11,5 +11,7 @@ depends: [
   "ctypes"
   "jbuilder" {build}
   "alcotest" {test}
+  "core" {test & < "v0.10"}
+  "core_bench" {test & < "v0.10"}
 ]
 build: [["jbuilder" "build" "-p" name "-j" jobs]]

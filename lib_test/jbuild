@@ -5,3 +5,9 @@
    (public_name test_bitarray)
    (libraries (bitarray alcotest))
    (modules (test_bitarray))))
+
+(executable
+  ((name bench_obitarray)
+   (public_name bench_obitarray)
+   (libraries (bitarray core core_bench))
+   (modules (bench_obitarray))))
