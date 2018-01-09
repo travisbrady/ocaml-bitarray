@@ -1,6 +1,13 @@
 (jbuild_version 1)
 
+(library
+  ((name bitarray_bindings)
+   (libraries (ctypes ctypes.stubs))
+   (wrapped false)
+   (modules (bitarray_bindings))))
+
 (executable
   ((name bitarray_bindgen)
    (public_name bitarray_bindgen)
-   (libraries (ctypes ctypes.stubs))))
+   (modules (bitarray_bindgen))
+   (libraries (ctypes ctypes.stubs bitarray_bindings))))

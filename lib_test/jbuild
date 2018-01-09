@@ -1,0 +1,7 @@
+(jbuild_version 1)
+
+(executable
+  ((name test_bitarray)
+   (public_name test_bitarray)
+   (libraries (bitarray alcotest))
+   (modules (test_bitarray))))

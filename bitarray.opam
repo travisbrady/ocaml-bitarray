@@ -10,8 +10,6 @@ available: [ ocaml-version >= "4.01.0" ]
 depends: [
   "ctypes"
   "jbuilder" {build}
+  "alcotest" {test}
 ]
-build: [
-  [ "ocaml" "pkg/build.ml" "native=%{ocaml-native}%"
-                           "native-dynlink=%{ocaml-native-dynlink}%" ]
-]
+build: [["jbuilder" "build" "-p" name "-j" jobs]]

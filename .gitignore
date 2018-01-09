@@ -3,3 +3,5 @@ _opam/
 .merlin
 *.install
 *.data
+bitarray_generated.ml
+bitarray_stubs.c
