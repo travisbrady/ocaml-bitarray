@@ -1,6 +1,7 @@
-*.native
-*.byte
-_build/*
-*.pyc
-*.o
+_build/
+_opam/
+.merlin
+*.install
 *.data
+bitarray_generated.ml
+bitarray_stubs.c

@@ -1,0 +1,17 @@
+opam-version: "1.2"
+maintainer: "Travis Brady <travis.brady@gmail.com>"
+authors: ["Travis Brady <travis.brady@gmail.com>"]
+homepage: "https://github.com/travisbrady/ocaml-bitarray"
+dev-repo: "https://github.com/travisbrady/ocaml-bitarray"
+bug-reports: "https://github.com/travisbrady/ocaml-bitarray/issues"
+tags: [ "computer" ]
+license: "BSD3"
+available: [ ocaml-version >= "4.01.0" ]
+depends: [
+  "ctypes"
+  "jbuilder" {build}
+  "alcotest" {test}
+  "core" {test & < "v0.10"}
+  "core_bench" {test & < "v0.10"}
+]
+build: [["jbuilder" "build" "-p" name "-j" jobs]]

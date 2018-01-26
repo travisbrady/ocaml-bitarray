@@ -1,6 +1,0 @@
-S lib
-S lib_test
-PKG ctypes
-PKG ctypes.foreign
-PKG alcotest
-B _build/lib

@@ -1,0 +1,16 @@
+(jbuild_version 1)
+
+(library
+  ((name bitarray)
+   (c_names (bit_array bitarray_stubs))
+   (libraries (ctypes))))
+
+(rule
+  ((targets (bitarray_stubs.c bitarray_generated.ml))
+   (deps (../lib_gen/bitarray_bindgen.exe))
+   (action (run ${<}))))
+
+(rule
+  ((targets (bitarray_bindings.ml))
+   (deps (../lib_gen/bitarray_bindings.ml))
+   (action (copy ${<} ${@}))))
