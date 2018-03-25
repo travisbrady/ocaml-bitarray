@@ -1,5 +1,5 @@
 # ocaml-bitarray
-OCaml bindings to [Bitarray](https://github.com/noporpoise/BitArray) library via ctypes
+OCaml bindings to the C-based [Bitarray](https://github.com/noporpoise/BitArray) library via ctypes
 
 ## Summary
 This repository provides OCaml binding's to [noporpoise's](https://github.com/noporpoise) full-featured Bitarray library.
